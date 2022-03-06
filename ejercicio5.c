@@ -5,8 +5,8 @@ long double serieLeibniz(int iterations) {
     int denominador = 1;
     long double pi = 0;
     for (int i = 0; i < iterations; i++) {
-        pi += signo * (4/denominador);
-        signo *= -1;
+        pi = pi + signo * (4/denominador);
+        signo = signo * -1;
         denominador += 2;
     }
     return pi;

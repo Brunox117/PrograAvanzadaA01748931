@@ -1,6 +1,6 @@
 //A01748931
 #include <stdio.h>
-double calcularPi(double iteraciones) {
+double serieLeibniz(double iteraciones) {
   double numerador = 4;
   double denominador = 1; // A este lo vamos a ir aumentando de 2 en 2
   double pi = 0;

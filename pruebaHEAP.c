@@ -3,6 +3,6 @@
 int main() {
     char c;
     char *ptr = malloc(1);
-    printf("stack at %p, heap at %p\n", &c, ptr);
+    printf("stack at %p", ptr);
     return 0;
 }

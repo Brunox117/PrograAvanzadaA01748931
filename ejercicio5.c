@@ -16,9 +16,9 @@ double serieLeibniz(double iteraciones) {
   return pi;
 }
 void main() {
-    printf("La serie de Leibniz con 1000 iteraciones: %f \n",serieLeibniz(1));
-    printf("La serie de Leibniz con 10000 iteraciones: %f \n",serieLeibniz(2));
-    printf("La serie de Leibniz con 1000000 iteraciones: %f \n",serieLeibniz(3));
+    printf("La serie de Leibniz con 1000 iteraciones: %f \n",serieLeibniz(1000));
+    printf("La serie de Leibniz con 10000 iteraciones: %f \n",serieLeibniz(10000));
+    printf("La serie de Leibniz con 1000000 iteraciones: %f \n",serieLeibniz(100000));
     return 0;
 }
 

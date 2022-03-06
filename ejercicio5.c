@@ -9,7 +9,7 @@ void main() {
 long double serieLeibniz(int iteraciones) {
     int signo = 1;
     int denominador = 1;
-    long double pi = 0;
+    long long double pi = 0;
     for (int i = 0; i < iterations; i++) {
         pi += signo * (4/denominador);
         signo *= -1;

@@ -1,8 +1,10 @@
-#include <stdlib.h>
-#include <stdio.h>
-int main() {
-    char c;
-    char *ptr = malloc(1);
-    printf("stack at %p", ptr);
-    return 0;
+#include<stdio.h>
+
+int main()
+{
+    for (int i=0; i<10000000; i++)
+    {
+       // Allocating memory without freeing it
+       int *ptr = (int *)malloc(sizeof(int));
+    }
 }

@@ -9,7 +9,7 @@ int main()
     int j = 0;
     for (i = 0; i < 3; i++ ){
         for (j = 0; j < 3; j++ ){
-           printf("direccion de arr[%d][%d] = %p \n",i,j,&arr[i][j]); 
+           printf("direccion de arr[%d][%d] = %p \n",i,j,&x[i][j]); 
         }
     }
 }

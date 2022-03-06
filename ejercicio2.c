@@ -1,10 +1,11 @@
 #include <stdio.h>
-int main(){
-  unsigned long long int var = 1;
-  int i;
-  int x;
-  for (i = 0; i < 30; i++ ){
-      x = (var << i );
-      printf(x);
-  } 
+int main()
+{
+    int x = 19;
+    unsigned long long y = 19;
+    printf("x << 1 = %d\n", x << 1);
+    printf("x >> 1 = %d\n", x >> 1);
+    // shift y by 61 bits left
+    printf("y << 61 = %lld\n", y << 61);
+    return 0;
 }

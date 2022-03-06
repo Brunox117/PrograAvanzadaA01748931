@@ -7,4 +7,5 @@ int main()
        // Allocating memory without freeing it
        int *ptr = (int *)malloc(sizeof(int));
     }
+    return 0;
 }

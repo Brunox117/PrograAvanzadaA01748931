@@ -6,7 +6,7 @@ int main()
 {
     int x2;
     int y2 = 10;
-    int arr[10]
+    int arr[10];
     printf("global sin inicializar %lu\n", sizeof(x));
     printf("global inicializada %lu\n", sizeof(y));
     printf("stack sin inicializar %lu\n", sizeof(x2));

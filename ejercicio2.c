@@ -1,11 +1,10 @@
 #include <stdio.h>
 int main()
 {
-    int x = 19;
-    unsigned long long y = 19;
-    printf("x << 1 = %d\n", x << 1);
-    printf("x >> 1 = %d\n", x >> 1);
-    // shift y by 61 bits left
-    printf("y << 61 = %lld\n", y << 61);
+    unsigned long long x = 19;
+    int i = 0;
+    for (i = 0; i < 30; i++ ){
+      printf("y << 61 = %lld\n", x << i);
+    } 
     return 0;
 }

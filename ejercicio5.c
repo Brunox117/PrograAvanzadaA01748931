@@ -1,6 +1,6 @@
 //A01748931
 #include <stdio.h>
-long double serieLeibniz(int iteraciones) {
+long double serieLeibniz(int iterations) {
     int signo = 1;
     int denominador = 1;
     long double pi = 0;

@@ -2,23 +2,21 @@
 #include <stdio.h>
 double serieLeibniz(double iteraciones) {
   double numerador = 4;
-  double denominador = 1; // A este lo vamos a ir aumentando de 2 en 2
+  double denominador = 1; 
   double pi = 0;
   int x = 0;
-  // Recuerda que es alternar entre negativo y positivo; por eso la bandera.
-  // Comenzamos en positivo
   int operador = 1;
   for (x; x < iteraciones; x++) {
     pi += operador * (numerador / denominador);
-    denominador += 2; // El denominador aumenta de 2 en 2
-    operador *= -1;   // Alternamos operador
+    denominador += 2; 
+    operador *= -1;   
   }
   return pi;
 }
 void main() {
-    printf("La serie de Leibniz con 1000 iteraciones: %f \n",serieLeibniz(1000));
-    printf("La serie de Leibniz con 10000 iteraciones: %f \n",serieLeibniz(10000));
-    printf("La serie de Leibniz con 1000000 iteraciones: %f \n",serieLeibniz(100000));
+    printf("Leibniz 1000: %f \n",serieLeibniz(1000));
+    printf("Leibniz 10000: %f \n",serieLeibniz(10000));
+    printf("Leibniz 1000000: %f \n",serieLeibniz(100000));
     return 0;
 }
 

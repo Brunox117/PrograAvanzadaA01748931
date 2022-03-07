@@ -5,7 +5,7 @@
 int main()
 {
     char *p;
-    x = 0;
+    int x = 0;
     while(1){
         x++;
         p = malloc(1024);

@@ -9,6 +9,6 @@ int main()
     while(1){
         x++;
         p = malloc(1024);
-        print("Iteracion %d el tamaño es: %d",x,sizeof(p))
+        printf("Iteracion %d el tamaño es: %d",x,sizeof(p))
     }
 }

@@ -4,9 +4,11 @@
 
 int main()
 {
-    for (int i=0; i<10000000; i++)
-    {
-       int *ptr = (int *)malloc(sizeof(int));
+    char *p;
+    x = 0;
+    while(1){
+        x++;
+        p = malloc(1024);
+        print("Iteracion %d el tamaño es: %d",x,sizeof(p))
     }
-    return 0;
 }

@@ -74,7 +74,7 @@ int main(void) {
    int x, y;				// Size of the image
    unsigned char *data;				// Array
 
-   tga = fopen("eldenRing.tga", "rb");
+   tga = fopen("averageOriginal.tga", "rb");
    readheader(&header, tga);  
    // Print size of the image
    printf("%d %d\n", header.width, header.height);

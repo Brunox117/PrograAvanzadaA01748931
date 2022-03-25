@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define MAX(x, y) (((x) > (y)) ? (x) : (y))
-#define MIN(x, y) (((x) < (y)) ? (x) : (y))
+#define BIGGEST(x, y, z) ( (x > y && x > z) ? x : ( y > z) ? y : z )  
+#define MINIMUM3(x, y, z) ( (x < y && x < z) ? x : ( y < z) ? y : z )
 typedef struct {
    char id_len;                 // ID Field (Number of bytes - max 255)
    char map_type;               // Colormap Field (0 or 1)
@@ -103,19 +103,19 @@ int main(void) {
     }
 
 	// Open output file
-   tga = fopen("luminosityAlgoritmo.tga", "wb");
+   tga = fopen("lightnessAlgoritmo.tga", "wb");
       
    writeheader(&header, tga);  
    for(y = 0; y < header.height; y++)
       for(x = 0; x < header.width; x++)	{
       	//luminosity
-      	fputc((data[(y * header.width + x)*3 + 0] * 0.07 + data[(y * header.width + x)*3 + 1] * 0.72 + data[(y * header.width + x)*3 + 2] * 0.21), tga);
-        fputc((data[(y * header.width + x)*3 + 0] * 0.07 + data[(y * header.width + x)*3 + 1] * 0.72 + data[(y * header.width + x)*3 + 2] * 0.21), tga);
-        fputc((data[(y * header.width + x)*3 + 0] * 0.07 + data[(y * header.width + x)*3 + 1] * 0.72 + data[(y * header.width + x)*3 + 2] * 0.21), tga);
+      	//fputc((data[(y * header.width + x)*3 + 0] * 0.07 + data[(y * header.width + x)*3 + 1] * 0.72 + data[(y * header.width + x)*3 + 2] * 0.21), tga);
+        //fputc((data[(y * header.width + x)*3 + 0] * 0.07 + data[(y * header.width + x)*3 + 1] * 0.72 + data[(y * header.width + x)*3 + 2] * 0.21), tga);
+        //fputc((data[(y * header.width + x)*3 + 0] * 0.07 + data[(y * header.width + x)*3 + 1] * 0.72 + data[(y * header.width + x)*3 + 2] * 0.21), tga);
         //lightness
-        //fputc(MAX(data[(y * header.width + x)*3 + 1],data[(y * header.width + x)*3 + 2]), tga);
-        //fputc(data[(y * header.width + x)*3 + 1], tga);
-        //fputc(data[(y * header.width + x)*3 + 2], tga);
+        fputc((BIGGEST(data[(y * header.width + x)*3 + 1],data[(y * header.width + x)*3 + 2],data[(y * header.width + x)*3 + 0]) + MINIMUM3(data[(y * header.width + x)*3 + 1],data[(y * header.width + x)*3 + 2],data[(y * header.width + x)*3 + 0]))/3, tga);
+        fputc((BIGGEST(data[(y * header.width + x)*3 + 1],data[(y * header.width + x)*3 + 2],data[(y * header.width + x)*3 + 0]) + MINIMUM3(data[(y * header.width + x)*3 + 1],data[(y * header.width + x)*3 + 2],data[(y * header.width + x)*3 + 0]))/3, tga);
+        fputc((BIGGEST(data[(y * header.width + x)*3 + 1],data[(y * header.width + x)*3 + 2],data[(y * header.width + x)*3 + 0]) + MINIMUM3(data[(y * header.width + x)*3 + 1],data[(y * header.width + x)*3 + 2],data[(y * header.width + x)*3 + 0]))/3, tga);
 	}
 
 /* close the file */

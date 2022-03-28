@@ -3,12 +3,9 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define INPUT "tigre.tga"
-#define OUTPUT "resultado.tga"
 #define MAX(x, y, z) ( (x > y && x > z) ? x : ( y > z) ? y : z )  
 #define MIN(x, y, z) ( (x < y && x < z) ? x : ( y < z) ? y : z )
-// Pregunta 1: ¿Cuántos bytes mide la siguiente estructura? R = 24 bytes
-
+// Pregunta 1: ¿Cuántos bytes mide la siguiente estructura? R = 36 bytes
 typedef struct {
    char id_len;                 // ID Field (Number of bytes - max 255)
    char map_type;               // Colormap Field (0 or 1)
@@ -24,16 +21,20 @@ typedef struct {
    char misc;                   // Other stuff - scan origin and alpha bits
 } targa_header;
 
-// Pregunta 2: En el archivo original se pasaba el parámetro targa_header y lo cambié a pasar un apuntador a targa_header, ¿por qué es mejor así?
+// Pregunta 2: En el archivo original se pasaba el parámetro targa_header y lo cambié a pasar un apuntador a targa_header, ¿por qué es mejor así? 
+// R = porque se pueden hacer operaciones con el apuntador
 void writeheader(targa_header *h, FILE *tga) {
 // Pregunta 3: fputc escribe un byte al archivo, ¿cuántos bytes se escriben aquí? 
+// R = 18 bytes
 // Pregunta 4: Compara con el tamaño de la estructura, ¿qué tipo de dato es mejor que int en este caso?
+// R = char
 
    fputc(h->id_len, tga);          // Write chars for ID, map, and image type
    fputc(h->map_type, tga);
    fputc(h->img_type, tga);
 
 // Pregunta 5: La operación % y / qué hacen y ¿por qué crees que se apliquen aquí? Tip: https://en.wikipedia.org/wiki/Endianness
+// R = % modulo / cociente division, se usan para acomodar los bytes menos significativos en la memoria mas chica y los bytes mas significativos en la memoria mas grande
    fputc(h->map_first % 256, tga); // Write integer, low order byte first
    fputc(h->map_first / 256, tga); // Write second byte of integer, high order
    fputc(h->map_len % 256, tga);   // Another integer 
@@ -58,6 +59,7 @@ void readheader(targa_header *h, FILE *tga) {
    h->img_type = fgetc(tga);
    
 // Pregunta 6: ¿Qué hace la siguiente operación? - compara con la pregunta 5.
+// Lee informacion del archivo
    h->map_first = fgetc(tga) + fgetc(tga)*256; 
    h->map_len = fgetc(tga) + fgetc(tga)*256;   // Another integer 
    h->map_entry_size = fgetc(tga);  // Write a char - only one byte

@@ -2,11 +2,9 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define INPUT "tigre.tga"
-#define OUTPUT "resultado.tga"
 #define MAX(x, y, z) ( (x > y && x > z) ? x : ( y > z) ? y : z )  
 #define MIN(x, y, z) ( (x < y && x < z) ? x : ( y < z) ? y : z )
-// Pregunta 1: ¿Cuántos bytes mide la siguiente estructura? R = 24
+// Pregunta 1: ¿Cuántos bytes mide la siguiente estructura? R = 30
 
 typedef struct {
    char id_len;                 // ID Field (Number of bytes - max 255)
@@ -24,15 +22,18 @@ typedef struct {
 } targa_header;
 
 // Pregunta 2: En el archivo original se pasaba el parámetro targa_header y lo cambié a pasar un apuntador a targa_header, ¿por qué es mejor así?
+//Porque de esta manera podemos hacer operaciones directamente con el apuntador
 void writeheader(targa_header *h, FILE *tga) {
-// Pregunta 3: fputc escribe un byte al archivo, ¿cuántos bytes se escriben aquí? 
+// Pregunta 3: fputc escribe un byte al archivo, ¿cuántos bytes se escriben aquí? R = 2
 // Pregunta 4: Compara con el tamaño de la estructura, ¿qué tipo de dato es mejor que int en este caso?
+// es mejor short
 
    fputc(h->id_len, tga);          // Write chars for ID, map, and image type
    fputc(h->map_type, tga);
    fputc(h->img_type, tga);
 
 // Pregunta 5: La operación % y / qué hacen y ¿por qué crees que se apliquen aquí? Tip: https://en.wikipedia.org/wiki/Endianness
+//con % usamos el valor menos significativo y lo asignamos en la direccion mas pequeña mientras que con / hacemos lo contrario
    fputc(h->map_first % 256, tga); // Write integer, low order byte first
    fputc(h->map_first / 256, tga); // Write second byte of integer, high order
    fputc(h->map_len % 256, tga);   // Another integer 
@@ -57,6 +58,7 @@ void readheader(targa_header *h, FILE *tga) {
    h->img_type = fgetc(tga);
    
 // Pregunta 6: ¿Qué hace la siguiente operación? - compara con la pregunta 5.
+// a diferencia de put que escribe aqui obtenemos informacion del file con get
    h->map_first = fgetc(tga) + fgetc(tga)*256; 
    h->map_len = fgetc(tga) + fgetc(tga)*256;   // Another integer 
    h->map_entry_size = fgetc(tga);  // Write a char - only one byte
@@ -117,10 +119,10 @@ int main(void) {
         data[(y * header.width + x)*3 + 1] = lightness;
         data[(y * header.width + x)*3 + 2] = lightness;*/
         // Algoritmo 2:
-        average = (r+g+b)/3;
+        /*average = (r+g+b)/3;
         data[(y * header.width + x)*3 + 0] = average;
         data[(y * header.width + x)*3 + 1] = average;
-        data[(y * header.width + x)*3 + 2] = average;
+        data[(y * header.width + x)*3 + 2] = average;*/
         // Algoritmo 3:
        luminosity = 0.21 * r + 0.72 * g + 0.07 * b;
        data[(y * header.width + x)*3 + 0] = luminosity;

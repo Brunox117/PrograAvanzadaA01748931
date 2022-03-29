@@ -4,7 +4,7 @@
 
 #define MAX(x, y, z) ( (x > y && x > z) ? x : ( y > z) ? y : z )  
 #define MIN(x, y, z) ( (x < y && x < z) ? x : ( y < z) ? y : z )
-// Pregunta 1: ¿Cuántos bytes mide la siguiente estructura? R = 30
+// Pregunta 1: ¿Cuántos bytes mide la siguiente estructura? R = 32
 
 typedef struct {
    char id_len;                 // ID Field (Number of bytes - max 255)

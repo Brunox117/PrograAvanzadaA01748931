@@ -14,6 +14,10 @@ int main(int argc, char *argv[])
       printf("Soy el nieto (%d, hijo de %d)\n",
              getpid(), getppid());
     }
+    else
+    { /* padre (2a generacion) = padre */
+      wait(&status2);
+    }
     if ((pid3 = fork()) == 0)
     { /* hijo (2a generacion)  = nieto */
       printf("Soy el nieto (%d, hijo de %d)\n",

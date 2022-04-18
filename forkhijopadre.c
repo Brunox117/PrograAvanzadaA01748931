@@ -24,7 +24,7 @@ getpid(), getppid());
     else
     { /* padre (1a generacion) = abuelo */
         wait(&status1);
-        printf("Soy el abuelo (%d, hijo de %d)\n", getpid(),
+        printf("Soy el abuelo (%d)\n", getpid(),
 getppid());
     }
  

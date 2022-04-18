@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     int status1, status2,status3;
     if((pid3=fork())==0){
     if ( (pid1=fork()) == 0 )
-    { /* hijo */
+    { 
         printf("Soy el primer hijo (%d, hijo de %d)\n",  getpid(), getppid());
     }
     else

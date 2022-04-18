@@ -27,8 +27,8 @@ int main(int argc, char *argv[])
         }
     }
     }else{
-      wait(&status3)
-      printf("Soy el abuelo (%d)\n",getpid())
+      wait(&status3);
+      printf("Soy el abuelo (%d)\n",getpid());
     }
     return 0;
 }

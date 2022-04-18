@@ -1,16 +1,32 @@
-#include <stdlib.h>
+#include <sys/types.h>
 #include <unistd.h>
 #include <stdio.h>
-void main(){
-  pid_t pid_padre,pid_hijos;
-  pid_padre=fork();
-  if(pid_padre==0){
-    for(int i=2;i>=1;i--){
-      printf("Soy el hijo %d, Mi padre es= %d, Mi PID= %d\n",i,getppid(),getpid());
+ 
+int main(int argc, char *argv[])
+{
+    pid_t pid1, pid2;
+    int status1, status2;
+ 
+    if ( (pid1=fork()) == 0 )
+    { /* hijo (1a generacion) = padre */
+        if ( (pid2=fork()) == 0 )
+        { /* hijo (2a generacion)  = nieto */
+            printf("Soy el nieto (%d, hijo de %d)\n",
+getpid(), getppid());
+        }
+        else
+        { /* padre (2a generacion) = padre */
+            wait(&status2);
+            printf("Soy el padre (%d, hijo de %d)\n",
+getpid(), getppid());
+        }
     }
-    printf("Proceso PADRE = %d\n",getppid());
-  }else{
-    pid_hijos=wait();
-  }
-  exit(0);
+    else
+    { /* padre (1a generacion) = abuelo */
+        wait(&status1);
+        printf("Soy el abuelo (%d, hijo de %d)\n", getpid(),
+getppid());
+    }
+ 
+    return 0;
 }

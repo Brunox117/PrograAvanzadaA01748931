@@ -35,4 +35,4 @@ int main(void) {
     exit(EXIT_SUCCESS);
 }
 
-// Usa file i/o.
+// Usa file stdio.

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
-
+#include <stdlib.h>
 void funcion(int a, int b);
 
 void call_3_times(int a) {
@@ -10,11 +10,12 @@ void call_3_times(int a) {
         printf("Proceso %d, iteracion %d\n", a, i);
         sleep(1);
     }
+    exit(-1);
 }
 
 int main() {
     int i;
-    call_3_times(0);
-    call_3_times(1);
-    call_3_times(2);
+    if (!fork()) call_3_times(0);
+    if (!fork()) call_3_times(1);
+    if (!fork()) call_3_times(2);
 }

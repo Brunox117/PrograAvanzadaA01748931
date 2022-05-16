@@ -9,7 +9,7 @@ int main() {
 	srandom(getpid());
 	//random()%51
 	FILE * archivo = fopen("sayings.txt","r");
-	x=80;
+	x=51;
 	while(x>0){
 		fgets(data[linea],80,archivo);
 		linea++;

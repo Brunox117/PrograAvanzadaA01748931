@@ -12,16 +12,14 @@ int main(int argc, char *argv[])
         printf("Soy el primer hijo (%d, hijo de %d)\n",  getpid(), getppid());
     }
     else
-    { /*  padre */
+    { 
         if ( (pid2=fork()) == 0 )
-        { /* segundo hijo  */
+        { 
             printf("Soy el segundo hijo (%d, hijo de %d)\n",  getpid(), getppid());
         }
         else
-        { /* padre */
-/* Esperamos al primer hijo */
+        { 
             waitpid(pid1, &status1, 0);
-/* Esperamos al segundo hijo */
             waitpid(pid2, &status2, 0);
             printf("Soy el padre (%d, hijo de %d)\n", getpid(), getppid());
         }

@@ -14,9 +14,8 @@ int main()
     int time = 10;
     int i = 0;
     while(i<time) {
-          /* write "Hi" to the FIFO */
           fd = open(myfifo, O_WRONLY);
-          write(fd, "Hi", sizeof("Hi"));
+          write(fd, "Hola mundo!", sizeof("Hola mundo!"));
           close(fd);
           sleep(10);
           i++;
